@@ -103,22 +103,24 @@ if __name__ == "__main__":
         option_choices = input("\nEnter an Option:  ")
         if option_choices.lower() == "a":
             print("\n\n1) Panthers\n2) Bandits\n3) Warriors")
-            option_teams = int(input("\n\nEnter an Option:  "))
-            if option_teams < 1 or option_teams > 3:
-                print("\n\nThe option you chose does not exist")
-            else:        
-                name_team = constants.TEAMS[option_teams-1]
-                chosed_team = []
-                if option_teams == 1:
-                    chosed_team = team1
-                if option_teams == 2:
-                    chosed_team = team2
-                if option_teams == 3:
-                    chosed_team = team3
-                display_stats(num_players_team, chosed_team, name_team)
-                input("\n\nPress ENTER to continue...")
-                continue  
-
+            try:
+                option_teams = int(input("\n\nEnter an Option:  "))                         
+                if option_teams < 1 or option_teams > 3:
+                    print("\n\nThe option you chose does not exist")
+                else:        
+                    name_team = constants.TEAMS[option_teams-1]
+                    chosed_team = []
+                    if option_teams == 1:
+                        chosed_team = team1
+                    if option_teams == 2:
+                        chosed_team = team2
+                    if option_teams == 3:
+                        chosed_team = team3
+                    display_stats(num_players_team, chosed_team, name_team)
+                    input("\n\nPress ENTER to continue...")
+                    continue
+            except ValueError as e:
+                print("\n\nEnter a valid option")
         elif option_choices.lower() == "b":
             sys.exit("\nSee you next time!")
     
